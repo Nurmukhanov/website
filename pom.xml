@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>brains</groupId>
+    <artifactId>website</artifactId>
+    <version>1.0</version>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.dropwizard/dropwizard-core -->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>1.3.0-rc3</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-assets</artifactId>
+            <version>1.3.0-rc3</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <executions>
+                    <execution>
+                        <id>prod</id>
+                            <goals>
+                                <goal>java</goal>
+                            </goals>
+                        <configuration>
+                            <mainClass>Main</mainClass>
+                            <arguments>
+                                <argument>server</argument>
+                                <!--<argument>prod.yml</argument>-->
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <id>bintray</id>
+            <url>http://dl.bintray.com/walkingdevs/mvn</url>
+        </repository>
+    </repositories>
+</project>
